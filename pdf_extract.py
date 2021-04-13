@@ -7,8 +7,6 @@ titles_list = []
 abstracts_list = []
 keywords_list = []
 
-
-
 pdf_files = []
 
 #This get the directory to our pdf files
@@ -60,17 +58,16 @@ def extract_text(pdf_file):
     abstract = abstract[-1].strip(': ')
     abstracts_list.append(abstract.strip('\n'))
     
-#     write_to_excel(titles_list, keywords_list, abstracts_list)
-# def write_to_excel(titles, keywords, abstracts):
+    write_to_excel(titles_list, keywords_list, abstracts_list)
+def write_to_excel(titles, keywords, abstracts):
 
-#     #This is the table values as key and our list of table value as the dictionary value 
-#     datas  = {'Article Title': titles, 'Keywords': keywords, 'Abstract': abstracts} 
-#     # print(datas)
-
+    #This is the table values as key and our list of table value as the dictionary value 
+    datas  = {'Article Title': titles, 'Keywords': keywords, 'Abstract': abstracts} 
+    # print(datas)
         
-#     df = pd.DataFrame.from_dict(datas)      #dataframe of our datas values write to a csv file
-#     df.to_csv('pdf_file.csv', index=False)
-#     print('done')
+    df = pd.DataFrame.from_dict(datas)      #dataframe of our datas values write to a csv file
+    df.to_csv('pdf_file.csv', index=False)
+    print('done')
     
 #This loop through the list of pdf files and pick each pdf item and pass it to the function
 for pdf_file in pdf_files[2:3]:
