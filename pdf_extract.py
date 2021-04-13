@@ -70,5 +70,5 @@ def write_to_excel(titles, keywords, abstracts):
     print('done')
     
 #This loop through the list of pdf files and pick each pdf item and pass it to the function
-for pdf_file in pdf_files[2:3]:
+for pdf_file in pdf_files[:2]:
     extract_text(pdf_file)
