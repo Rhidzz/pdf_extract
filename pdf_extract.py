@@ -6,7 +6,7 @@ import os
 titles_list = []
 abstracts_list = []
 keywords_list = []
-
+full_text_list= []
 
 
 pdf_files = []
@@ -39,6 +39,9 @@ def extract_text(pdf_file):
     item_details  = re.split(r'((1  Introduction|1. Introduction|I. INTRODUCTION|Being))',text) 
     keywords = item_details[0]
 
+    full_text = ' '.join(item_details[2:])
+    full_text_list.append(full_text)
+
     #Split the text with regular expression of word 'Abstract' and clean it to get title
     titles = re.split(r'(Abstract|Florida State University)',keywords)
     titles = titles[0].split('\n')
@@ -69,11 +72,11 @@ def extract_text(pdf_file):
     abstracts_list.append(abstract.strip('\n'))
     # print(abstract)
 
-    write_to_excel(titles_list, keywords_list, abstracts_list)
-def write_to_excel(titles, keywords, abstracts):
+    write_to_excel(titles_list, keywords_list, abstracts_list, full_text_list)
+def write_to_excel(titles, keywords, abstracts, full_texts):
 
     #This is the table values as key and our list of table value as the dictionary value 
-    datas  = {'Article Title': titles, 'Keywords': keywords, 'Abstract': abstracts} 
+    datas  = {'Article Title': titles, 'Keywords': keywords, 'Abstract': abstracts, 'Full Text': full_texts} 
     # print(datas)
 
         
