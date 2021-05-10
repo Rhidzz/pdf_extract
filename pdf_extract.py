@@ -41,6 +41,7 @@ def extract_text(pdf_file):
 
     full_texts  = re.split(r'((1  Introduction|1. Introduction|I. INTRODUCTION|Being))',text) 
     full_text = ' '.join(full_texts[2:])
+    print(full_text)
     full_text_list.append(full_text)
 
     #Split the text with regular expression of word 'Abstract' and clean it to get title
